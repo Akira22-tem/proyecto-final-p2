@@ -561,4 +561,98 @@ function FormularioContacto({
             </div>
 
  
+             {/* Botones del formulario */}
+            <div className="d-flex gap-4 justify-content-center mt-4">
+              <button
+                className="btn border-0"
+                onClick={manejarEnvio}
+                type="submit"
+                style={estilosGuerreros.botonGuardar}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = 'translateY(-4px) scale(1.05)';
+                  e.target.style.boxShadow =
+                    '0 8px 25px rgba(220, 38, 38, 0.6)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = 'translateY(0) scale(1)';
+                  e.target.style.boxShadow =
+                    '0 6px 20px rgba(220, 38, 38, 0.4)';
+                }}
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="me-2"
+                >
+                  <path
+                    d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <polyline
+                    points="17,21 17,13 7,13 7,21"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <polyline
+                    points="7,3 7,8 15,8"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                </svg>
+                {contactoEditando
+                  ? '⚔️ ACTUALIZAR GUERRERO'
+                  : '🛡️ RECLUTAR GUERRERO'}
+              </button>
+              <button
+                className="btn border-0"
+                onClick={onCancelar}
+                type="button"
+                style={estilosGuerreros.botonCancelar}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = 'translateY(-4px) scale(1.05)';
+                  e.target.style.boxShadow =
+                    '0 8px 25px rgba(107, 114, 128, 0.6)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = 'translateY(0) scale(1)';
+                  e.target.style.boxShadow =
+                    '0 6px 20px rgba(107, 114, 128, 0.4)';
+                }}
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="me-2"
+                >
+                  <line
+                    x1="18"
+                    y1="6"
+                    x2="6"
+                    y2="18"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <line
+                    x1="6"
+                    y1="6"
+                    x2="18"
+                    y2="18"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                </svg>
+                🚫 CANCELAR MISIÓN
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 export default FormularioContacto;
