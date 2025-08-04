@@ -423,5 +423,142 @@ function FormularioContacto({
                   )}
                 </div>
               </div>
-                     
+              {/* Campo Email */}
+              <div className="col-md-6">
+                <div className="mb-4">
+                  <label
+                    htmlFor="txt_email"
+                    className="form-label"
+                    style={estilosGuerreros.label}
+                  >
+                    📧 Comunicación de Batalla *
+                  </label>
+                  <input
+                    type="email"
+                    className={`form-control border-0 ${
+                      errores.email ? 'is-invalid' : ''
+                    }`}
+                    id="txt_email"
+                    value={datosFormulario.email}
+                    onChange={(e) =>
+                      manejarCambioInput('email', e.target.value)
+                    }
+                    placeholder="guerrero@batalla.com"
+                    style={estilosGuerreros.input}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#fbbf24';
+                      e.target.style.boxShadow =
+                        '0 0 0 4px rgba(251, 191, 36, 0.3)';
+                      e.target.style.transform = 'translateY(-2px)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = '#374151';
+                      e.target.style.boxShadow = 'none';
+                      e.target.style.transform = 'translateY(0)';
+                    }}
+                  />
+                  {errores.email && (
+                    <div
+                      className="invalid-feedback"
+                      style={{ fontWeight: 'bold', fontSize: '14px' }}
+                    >
+                      🚫 {errores.email}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Campo Teléfono */}
+              <div className="col-md-6">
+                <div className="mb-4">
+                  <label
+                    htmlFor="txt_telefono"
+                    className="form-label"
+                    style={estilosGuerreros.label}
+                  >
+                    📱 Línea Directa de Combate *
+                  </label>
+                  <input
+                    type="tel"
+                    className={`form-control border-0 ${
+                      errores.telefono ? 'is-invalid' : ''
+                    }`}
+                    id="txt_telefono"
+                    value={datosFormulario.telefono}
+                    onChange={(e) =>
+                      manejarCambioInput('telefono', e.target.value)
+                    }
+                    placeholder="0987654321"
+                    maxLength="10"
+                    style={estilosGuerreros.input}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#fbbf24';
+                      e.target.style.boxShadow =
+                        '0 0 0 4px rgba(251, 191, 36, 0.3)';
+                      e.target.style.transform = 'translateY(-2px)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = '#374151';
+                      e.target.style.boxShadow = 'none';
+                      e.target.style.transform = 'translateY(0)';
+                    }}
+                  />
+                  {errores.telefono && (
+                    <div
+                      className="invalid-feedback"
+                      style={{ fontWeight: 'bold', fontSize: '14px' }}
+                    >
+                      🚫 {errores.telefono}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Campo Dirección */}
+              <div className="col-md-6">
+                <div className="mb-4">
+                  <label
+                    htmlFor="txt_direccion"
+                    className="form-label"
+                    style={estilosGuerreros.label}
+                  >
+                    🏰 Fortaleza Base *
+                  </label>
+                  <input
+                    type="text"
+                    className={`form-control border-0 ${
+                      errores.direccion ? 'is-invalid' : ''
+                    }`}
+                    id="txt_direccion"
+                    value={datosFormulario.direccion}
+                    onChange={(e) =>
+                      manejarCambioInput('direccion', e.target.value)
+                    }
+                    placeholder="Ubicación de la fortaleza"
+                    style={estilosGuerreros.input}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#fbbf24';
+                      e.target.style.boxShadow =
+                        '0 0 0 4px rgba(251, 191, 36, 0.3)';
+                      e.target.style.transform = 'translateY(-2px)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = '#374151';
+                      e.target.style.boxShadow = 'none';
+                      e.target.style.transform = 'translateY(0)';
+                    }}
+                  />
+                  {errores.direccion && (
+                    <div
+                      className="invalid-feedback"
+                      style={{ fontWeight: 'bold', fontSize: '14px' }}
+                    >
+                      🚫 {errores.direccion}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+ 
 export default FormularioContacto;
