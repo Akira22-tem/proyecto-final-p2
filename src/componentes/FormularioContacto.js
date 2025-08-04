@@ -170,5 +170,213 @@ function FormularioContacto({
     }
   };
 
-  
+  // Estilos personalizados temática guerrera
+  const estilosGuerreros = {
+    tarjeta: {
+      background: modoOscuro
+        ? 'linear-gradient(145deg, #1f2937 0%, #111827 50%, #1f2937 100%)'
+        : 'linear-gradient(145deg, #ffffff 0%, #f9fafb 50%, #ffffff 100%)',
+      border: modoOscuro ? '3px solid #dc2626' : '3px solid #dc2626',
+      borderRadius: '20px',
+      boxShadow: modoOscuro
+        ? '0 10px 40px rgba(220, 38, 38, 0.4)'
+        : '0 10px 40px rgba(220, 38, 38, 0.3)',
+      overflow: 'hidden',
+    },
+    header: {
+      background: 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
+      color: '#ffffff',
+      borderBottom: '4px solid #fbbf24',
+      fontWeight: 'bold',
+      textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+      padding: '20px',
+    },
+    input: {
+      border: '3px solid #374151',
+      borderRadius: '12px',
+      padding: '15px 20px',
+      fontSize: '16px',
+      background: modoOscuro ? '#111827' : '#ffffff',
+      color: modoOscuro ? '#f9fafb' : '#111827',
+      transition: 'all 0.3s ease',
+      fontWeight: '500',
+    },
+    label: {
+      color: modoOscuro ? '#fbbf24' : '#dc2626',
+      fontWeight: 'bold',
+      fontSize: '15px',
+      textTransform: 'uppercase',
+      letterSpacing: '0.5px',
+      marginBottom: '8px',
+    },
+    botonGuardar: {
+      background: 'linear-gradient(135deg, #dc2626 0%, #991b1b 100%)',
+      border: '3px solid #fbbf24',
+      color: '#ffffff',
+      fontWeight: 'bold',
+      padding: '15px 30px',
+      borderRadius: '12px',
+      textTransform: 'uppercase',
+      letterSpacing: '1px',
+      boxShadow: '0 6px 20px rgba(220, 38, 38, 0.4)',
+      transition: 'all 0.3s ease',
+      fontSize: '16px',
+    },
+    botonCancelar: {
+      background: 'linear-gradient(135deg, #6b7280 0%, #4b5563 100%)',
+      border: '3px solid #9ca3af',
+      color: '#ffffff',
+      fontWeight: 'bold',
+      padding: '15px 30px',
+      borderRadius: '12px',
+      textTransform: 'uppercase',
+      letterSpacing: '1px',
+      boxShadow: '0 6px 20px rgba(107, 114, 128, 0.4)',
+      transition: 'all 0.3s ease',
+      fontSize: '16px',
+    },
+    contenedorFoto: {
+      border: '3px dashed #dc2626',
+      borderRadius: '15px',
+      padding: '20px',
+      textAlign: 'center',
+      background: modoOscuro
+        ? 'rgba(220, 38, 38, 0.1)'
+        : 'rgba(220, 38, 38, 0.05)',
+      transition: 'all 0.3s ease',
+    },
+    previsualizacionFoto: {
+      width: '120px',
+      height: '120px',
+      borderRadius: '50%',
+      objectFit: 'cover',
+      border: '4px solid #fbbf24',
+      boxShadow: '0 4px 15px rgba(251, 191, 36, 0.5)',
+    },
+  };
+
+  return (
+    <div className="row mb-5">
+      <div className="col-12">
+        <div className="card border-0" style={estilosGuerreros.tarjeta}>
+          <div className="card-header border-0" style={estilosGuerreros.header}>
+            <h4 className="mb-0 d-flex align-items-center justify-content-center">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                className="me-3"
+              >
+                <path
+                  d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16l3-2 3 2z"
+                  fill="currentColor"
+                />
+                <circle cx="9" cy="9" r="2" fill="#1f2937" />
+                <circle cx="15" cy="9" r="2" fill="#1f2937" />
+              </svg>
+              {contactoEditando
+                ? '⚔️ ENTRENAR GUERRERO'
+                : '🛡️ RECLUTAR NUEVO GUERRERO'}
+            </h4>
+          </div>
+          <div className="card-body p-5">
+            {/* Sección de foto */}
+            <div className="row mb-4">
+              <div className="col-12">
+                <label className="form-label" style={estilosGuerreros.label}>
+                  📸 Retrato del Guerrero
+                </label>
+                <div style={estilosGuerreros.contenedorFoto}>
+                  {datosFormulario.fotoUrl ? (
+                    <div>
+                      <img
+                        src={datosFormulario.fotoUrl}
+                        alt="Foto del guerrero"
+                        style={estilosGuerreros.previsualizacionFoto}
+                      />
+                      <div className="mt-3">
+                        <button
+                          type="button"
+                          className="btn btn-sm"
+                          onClick={eliminarFoto}
+                          style={{
+                            background:
+                              'linear-gradient(135deg, #dc2626 0%, #991b1b 100%)',
+                            color: '#ffffff',
+                            border: '2px solid #fbbf24',
+                            borderRadius: '8px',
+                            fontWeight: 'bold',
+                          }}
+                        >
+                          🗑️ Eliminar Foto
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <svg
+                        width="60"
+                        height="60"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        className="mb-3"
+                      >
+                        <rect
+                          x="3"
+                          y="3"
+                          width="18"
+                          height="18"
+                          rx="2"
+                          ry="2"
+                          stroke="#dc2626"
+                          strokeWidth="2"
+                        />
+                        <circle
+                          cx="8.5"
+                          cy="8.5"
+                          r="1.5"
+                          stroke="#dc2626"
+                          strokeWidth="2"
+                        />
+                        <polyline
+                          points="21,15 16,10 5,21"
+                          stroke="#dc2626"
+                          strokeWidth="2"
+                        />
+                      </svg>
+                      <p
+                        style={{
+                          color: modoOscuro ? '#fbbf24' : '#dc2626',
+                          fontWeight: 'bold',
+                        }}
+                      >
+                        📷 Subir foto del guerrero
+                      </p>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={manejarCambioFoto}
+                        className="form-control"
+                        style={{
+                          border: '2px solid #fbbf24',
+                          borderRadius: '8px',
+                          background: modoOscuro ? '#111827' : '#ffffff',
+                        }}
+                      />
+                    </div>
+                  )}
+                  {errores.foto && (
+                    <div
+                      className="text-danger mt-2"
+                      style={{ fontWeight: 'bold' }}
+                    >
+                      🚫 {errores.foto}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            
 export default FormularioContacto;
