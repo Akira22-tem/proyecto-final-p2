@@ -108,5 +108,67 @@ function FormularioContacto({
         return;
       }
 
-      
+      // Verificar tamaño (máximo 5MB)
+      if (archivo.size > 5 * 1024 * 1024) {
+        setErrores({
+          ...errores,
+          foto: 'La imagen debe ser menor a 5MB',
+        });
+        return;
+      }
+
+      // Convertir a base64 para almacenar en localStorage
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setDatosFormulario({
+          ...datosFormulario,
+          foto: archivo,
+          fotoUrl: e.target.result,
+        });
+        // Limpiar error de foto
+        if (errores.foto) {
+          setErrores({
+            ...errores,
+            foto: '',
+          });
+        }
+      };
+      reader.readAsDataURL(archivo);
+    }
+  };
+
+  // Eliminar foto
+  const eliminarFoto = () => {
+    setDatosFormulario({
+      ...datosFormulario,
+      foto: null,
+      fotoUrl: '',
+    });
+  };
+
+  // Manejar envío del formulario
+  const manejarEnvio = (e) => {
+    e.preventDefault();
+
+    if (validarFormulario()) {
+      const contactoParaGuardar = contactoEditando
+        ? { ...datosFormulario, id: contactoEditando.id }
+        : datosFormulario;
+
+      onGuardarContacto(contactoParaGuardar);
+
+      // Limpiar formulario
+      setDatosFormulario({
+        nombre: '',
+        email: '',
+        telefono: '',
+        direccion: '',
+        foto: null,
+        fotoUrl: '',
+      });
+      setErrores({});
+    }
+  };
+
+  
 export default FormularioContacto;
