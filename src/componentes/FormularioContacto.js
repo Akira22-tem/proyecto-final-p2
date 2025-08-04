@@ -68,4 +68,23 @@ function FormularioContacto({
       nuevosErrores.telefono = 'El teléfono debe tener exactamente 10 dígitos';
     }
 
+     // Validar dirección
+    if (!datosFormulario.direccion.trim()) {
+      nuevosErrores.direccion = 'La dirección es obligatoria';
+    } else if (datosFormulario.direccion.trim().length < 5) {
+      nuevosErrores.direccion = 'La dirección debe tener al menos 5 caracteres';
+    }
+
+    setErrores(nuevosErrores);
+    return Object.keys(nuevosErrores).length === 0;
+  };
+
+  // Manejar cambios en los inputs
+  const manejarCambioInput = (campo, valor) => {
+    setDatosFormulario({
+      ...datosFormulario,
+      [campo]: valor,
+    });
+
+    
 export default FormularioContacto;
