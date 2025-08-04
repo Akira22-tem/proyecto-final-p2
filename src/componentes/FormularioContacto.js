@@ -378,5 +378,50 @@ function FormularioContacto({
               </div>
             </div>
 
-            
+            <div className="row">
+              {/* Campo Nombre */}
+              <div className="col-md-6">
+                <div className="mb-4">
+                  <label
+                    htmlFor="txt_nombre"
+                    className="form-label"
+                    style={estilosGuerreros.label}
+                  >
+                    ⚡ Nombre del Guerrero *
+                  </label>
+                  <input
+                    type="text"
+                    className={`form-control border-0 ${
+                      errores.nombre ? 'is-invalid' : ''
+                    }`}
+                    id="txt_nombre"
+                    value={datosFormulario.nombre}
+                    onChange={(e) =>
+                      manejarCambioInput('nombre', e.target.value)
+                    }
+                    placeholder="Nombre completo del guerrero"
+                    style={estilosGuerreros.input}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#fbbf24';
+                      e.target.style.boxShadow =
+                        '0 0 0 4px rgba(251, 191, 36, 0.3)';
+                      e.target.style.transform = 'translateY(-2px)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = '#374151';
+                      e.target.style.boxShadow = 'none';
+                      e.target.style.transform = 'translateY(0)';
+                    }}
+                  />
+                  {errores.nombre && (
+                    <div
+                      className="invalid-feedback"
+                      style={{ fontWeight: 'bold', fontSize: '14px' }}
+                    >
+                      🚫 {errores.nombre}
+                    </div>
+                  )}
+                </div>
+              </div>
+                     
 export default FormularioContacto;
