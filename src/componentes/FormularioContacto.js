@@ -86,5 +86,27 @@ function FormularioContacto({
       [campo]: valor,
     });
 
-    
+        // Limpiar error del campo cuando el usuario empiece a escribir
+    if (errores[campo]) {
+      setErrores({
+        ...errores,
+        [campo]: '',
+      });
+    }
+  };
+
+  // Manejar subida de foto
+  const manejarCambioFoto = (e) => {
+    const archivo = e.target.files[0];
+    if (archivo) {
+      // Verificar que sea una imagen
+      if (!archivo.type.startsWith('image/')) {
+        setErrores({
+          ...errores,
+          foto: 'Solo se permiten archivos de imagen',
+        });
+        return;
+      }
+
+      
 export default FormularioContacto;
