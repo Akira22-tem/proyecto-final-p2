@@ -165,7 +165,7 @@ function ListaContactos({
     );
   }
   
-  
+
 
   if (contactos.length === 0) {
     return (
@@ -215,6 +215,55 @@ function ListaContactos({
     );
   }
 
+
+
+   if (contactos.length === 0) {
+    return (
+      <div className="text-center py-5">
+        <div className="mb-4">
+          <svg width="150" height="150" viewBox="0 0 24 24" fill="none">
+            <circle cx="11" cy="11" r="8" stroke="#dc2626" strokeWidth="4" />
+            <path d="m21 21-4.35-4.35" stroke="#fbbf24" strokeWidth="4" />
+            <line
+              x1="11"
+              y1="8"
+              x2="11"
+              y2="14"
+              stroke="#dc2626"
+              strokeWidth="3"
+            />
+            <line
+              x1="8"
+              y1="11"
+              x2="14"
+              y2="11"
+              stroke="#dc2626"
+              strokeWidth="3"
+            />
+          </svg>
+        </div>
+        <h2
+          style={{
+            color: '#dc2626',
+            fontWeight: 'bold',
+            textShadow: '2px 2px 4px rgba(220, 38, 38, 0.3)',
+            marginBottom: '20px',
+          }}
+        >
+          🔍 GUERREROS NO ENCONTRADOS
+        </h2>
+        <p
+          style={{
+            fontSize: '18px',
+            color: modoOscuro ? '#fbbf24' : '#dc2626',
+            fontWeight: 'bold',
+          }}
+        >
+          ⚡ Ajusta los filtros de búsqueda para encontrar a tus guerreros
+        </p>
+      </div>
+    );
+  }
 
 }
 
