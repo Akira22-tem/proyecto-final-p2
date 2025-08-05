@@ -120,4 +120,51 @@ function ListaContactos({
   };
 
 
+
+  
+  if (totalContactosOriginales === 0) {
+    return (
+      <div className="text-center py-5">
+        <div className="mb-4">
+          <svg width="150" height="150" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M12 2L3 7L12 12L21 7L12 2Z"
+              fill={modoOscuro ? '#374151' : '#9ca3af'}
+              stroke="#dc2626"
+              strokeWidth="3"
+            />
+            <path
+              d="M3 7V17C3 19 12 22 12 22S21 19 21 17V7"
+              stroke="#dc2626"
+              strokeWidth="3"
+              fill="none"
+            />
+            <circle cx="12" cy="14" r="2" fill="#fbbf24" />
+          </svg>
+        </div>
+        <h2
+          style={{
+            color: '#dc2626',
+            fontWeight: 'bold',
+            textShadow: '2px 2px 4px rgba(220, 38, 38, 0.3)',
+            marginBottom: '20px',
+          }}
+        >
+          🏰 NO HAY GUERREROS RECLUTADOS
+        </h2>
+        <p
+          style={{
+            fontSize: '18px',
+            color: modoOscuro ? '#fbbf24' : '#dc2626',
+            fontWeight: 'bold',
+          }}
+        >
+          ⚔️ Comienza tu ejército reclutando tu primer guerrero de élite
+        </p>
+      </div>
+    );
+  }
+
+
+
 }
