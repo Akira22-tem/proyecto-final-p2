@@ -14,7 +14,13 @@ function ListaContactos({
     return nombre.charAt(0).toUpperCase();
   };
 
-  
-
+    const formatearFecha = (fechaISO) => {
+    const fecha = new Date(fechaISO);
+    return fecha.toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
+  };
 
 }
