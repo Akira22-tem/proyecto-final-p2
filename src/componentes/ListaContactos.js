@@ -1,7 +1,7 @@
 import React from 'react';
 
 function ListaContactos({
-    
+
   contactos,
   totalContactosOriginales,
   onEditarContacto,
@@ -10,6 +10,11 @@ function ListaContactos({
 
 }){
 
+    const obtenerIniciales = (nombre) => {
+    return nombre.charAt(0).toUpperCase();
+  };
+
+  
 
 
 }
