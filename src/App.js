@@ -110,14 +110,50 @@ function App() {
     setContactoEditando(null);
   };
 
+  // buscar guerreros por nombre o email
+  const contactosFiltradosBusqueda = contactos.filter(
+    (contacto) =>
+      contacto.nombre.toLowerCase().includes(terminoBusqueda.toLowerCase()) ||
+      contacto.email.toLowerCase().includes(terminoBusqueda.toLowerCase())
+  );
+
+  // ordenar y filtrar por letra
+  const contactosFinales = contactosFiltradosBusqueda
+    .filter(
+      (contacto) =>
+        letraFiltro === '' ||
+        contacto.nombre.toLowerCase().startsWith(letraFiltro.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (ordenAscendente) {
+        return a.nombre.localeCompare(b.nombre);
+      } else {
+        return b.nombre.localeCompare(a.nombre);
+      }
+    });
+
+  // letras disponibles para filtro
+  const letrasDisponibles = [
+    ...new Set(
+      contactos.map((contacto) => contacto.nombre.charAt(0).toUpperCase())
+    ),
+  ].sort();
+
+  // cambiar modo oscuro
+  const alternarModoOscuro = () => {
+    setModoOscuro(!modoOscuro);
+  };
+
   return (
     <div>
-      <h1>agenda guerrera - contactos: {contactos.length}</h1>
-      <button onClick={() => setMostrarFormulario(true)}>
-        agregar guerrero
-      </button>
-      <button onClick={() => setModoOscuro(!modoOscuro)}>
-        {modoOscuro ? 'modo claro' : 'modo oscuro'}
+      <h1>agenda guerrera - encontrados: {contactosFinales.length}</h1>
+      <input
+        placeholder="buscar guerrero..."
+        value={terminoBusqueda}
+        onChange={(e) => setTerminoBusqueda(e.target.value)}
+      />
+      <button onClick={() => setOrdenAscendente(!ordenAscendente)}>
+        orden: {ordenAscendente ? 'a-z' : 'z-a'}
       </button>
     </div>
   );
