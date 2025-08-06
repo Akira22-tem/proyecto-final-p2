@@ -232,7 +232,7 @@ function ListaContactos({
                 : '0 10px 30px rgba(0, 0, 0, 0.15)';
             }}
           >
-            {/* Barra superior decorativa */}
+            {}
             <div
               style={{
                 position: 'absolute',
@@ -246,9 +246,9 @@ function ListaContactos({
             ></div>
 
             <div className="card-body p-4" style={{ paddingTop: '25px' }}>
-              {/* Header de la tarjeta con avatar y botones */}
+              {}
               <div className="d-flex justify-content-between align-items-start mb-4">
-                {/* Avatar o foto del guerrero */}
+                {}
                 {contacto.fotoUrl ? (
                   <img
                     src={contacto.fotoUrl}
@@ -333,7 +333,7 @@ function ListaContactos({
                 </div>
               </div>
 
-              {/* Información del contacto */}
+              {}
               <h5
                 className="card-title text-truncate mb-4"
                 style={estilosGuerreros.nombreGuerrero}
@@ -410,7 +410,7 @@ function ListaContactos({
               </div>
             </div>
 
-            {/* Footer de la tarjeta */}
+            {}
             <div
               className="card-footer border-0 text-center"
               style={estilosGuerreros.footerTarjeta}
