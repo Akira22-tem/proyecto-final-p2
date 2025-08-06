@@ -52,9 +52,47 @@ function App() {
     }
   }, [modoOscuro]);
 
+  // añadir guerrero nuevo
+  const agregarContacto = (nuevoContacto) => {
+    const contactoCompleto = {
+      ...nuevoContacto,
+      id: Date.now(),
+      fechaCreacion: new Date().toISOString(),
+    };
+    setContactos([...contactos, contactoCompleto]);
+    setMostrarFormulario(false);
+  };
+
+  // actualizar guerrero existente
+  const editarContacto = (contactoActualizado) => {
+    const contactosActualizados = contactos.map((contacto) =>
+      contacto.id === contactoActualizado.id
+        ? { ...contactoActualizado, fechaCreacion: contacto.fechaCreacion }
+        : contacto
+    );
+    setContactos(contactosActualizados);
+    setContactoEditando(null);
+    setMostrarFormulario(false);
+  };
+
+  // preparar guerrero para editar
+  const prepararEdicion = (contacto) => {
+    setContactoEditando(contacto);
+    setMostrarFormulario(true);
+  };
+
+  // cancelar formulario
+  const cancelarFormulario = () => {
+    setMostrarFormulario(false);
+    setContactoEditando(null);
+  };
+
   return (
     <div>
-      <h1>agenda guerrera cargando... contactos: {contactos.length}</h1>
+      <h1>agenda guerrera - contactos: {contactos.length}</h1>
+      <button onClick={() => setMostrarFormulario(true)}>
+        agregar guerrero
+      </button>
     </div>
   );
 }
