@@ -75,6 +75,29 @@ function App() {
     setMostrarFormulario(false);
   };
 
+  // preparar guerrero para expulsar
+  const iniciarEliminacion = (contacto) => {
+    setContactoAEliminar(contacto);
+    setMostrarModalEliminacion(true);
+  };
+
+  // confirmar expulsion del guerrero
+  const confirmarEliminacion = () => {
+    if (contactoAEliminar) {
+      setContactos(
+        contactos.filter((contacto) => contacto.id !== contactoAEliminar.id)
+      );
+      setMostrarModalEliminacion(false);
+      setContactoAEliminar(null);
+    }
+  };
+
+  // cancelar expulsion
+  const cancelarEliminacion = () => {
+    setMostrarModalEliminacion(false);
+    setContactoAEliminar(null);
+  };
+
   // preparar guerrero para editar
   const prepararEdicion = (contacto) => {
     setContactoEditando(contacto);
@@ -92,6 +115,9 @@ function App() {
       <h1>agenda guerrera - contactos: {contactos.length}</h1>
       <button onClick={() => setMostrarFormulario(true)}>
         agregar guerrero
+      </button>
+      <button onClick={() => setModoOscuro(!modoOscuro)}>
+        {modoOscuro ? 'modo claro' : 'modo oscuro'}
       </button>
     </div>
   );
