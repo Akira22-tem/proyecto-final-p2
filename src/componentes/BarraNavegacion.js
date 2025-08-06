@@ -5,7 +5,7 @@ function BarraNavegacion({
   alternarModoOscuro,
   mostrarFormulario,
 }) {
-  // Manejar clic en nuevo contacto
+  // Manejar clic nuevo contacto
   const manejarNuevoContacto = () => {
     mostrarFormulario();
   };
