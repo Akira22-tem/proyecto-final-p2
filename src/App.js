@@ -145,16 +145,69 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>agenda guerrera - encontrados: {contactosFinales.length}</h1>
-      <input
-        placeholder="buscar guerrero..."
-        value={terminoBusqueda}
-        onChange={(e) => setTerminoBusqueda(e.target.value)}
+    <div
+      className="min-vh-100"
+      style={{
+        background: modoOscuro
+          ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)'
+          : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f8fafc 100%)',
+        minHeight: '100vh',
+      }}
+    >
+      <BarraNavegacion
+        modoOscuro={modoOscuro}
+        alternarModoOscuro={alternarModoOscuro}
+        mostrarFormulario={() => setMostrarFormulario(true)}
       />
-      <button onClick={() => setOrdenAscendente(!ordenAscendente)}>
-        orden: {ordenAscendente ? 'a-z' : 'z-a'}
-      </button>
+
+      <div className="container py-4">
+        {mostrarFormulario && (
+          <FormularioContacto
+            contactoEditando={contactoEditando}
+            onGuardarContacto={
+              contactoEditando ? editarContacto : agregarContacto
+            }
+            onCancelar={cancelarFormulario}
+            modoOscuro={modoOscuro}
+          />
+        )}
+
+        <BusquedaContactos
+          terminoBusqueda={terminoBusqueda}
+          onCambiarBusqueda={setTerminoBusqueda}
+          modoOscuro={modoOscuro}
+        />
+
+        <FiltrosOrdenacion
+          ordenAscendente={ordenAscendente}
+          onCambiarOrden={setOrdenAscendente}
+          letraFiltro={letraFiltro}
+          onCambiarLetraFiltro={setLetraFiltro}
+          letrasDisponibles={letrasDisponibles}
+          totalContactos={contactosFinales.length}
+          modoOscuro={modoOscuro}
+        />
+
+        {contactos.length > 0 && (
+          <ExportarContactos contactos={contactos} modoOscuro={modoOscuro} />
+        )}
+
+        <ListaContactos
+          contactos={contactosFinales}
+          totalContactosOriginales={contactos.length}
+          onEditarContacto={prepararEdicion}
+          onEliminarContacto={iniciarEliminacion}
+          modoOscuro={modoOscuro}
+        />
+      </div>
+
+      <ModalEliminacion
+        mostrar={mostrarModalEliminacion}
+        contacto={contactoAEliminar}
+        onConfirmar={confirmarEliminacion}
+        onCancelar={cancelarEliminacion}
+        modoOscuro={modoOscuro}
+      />
     </div>
   );
 }
