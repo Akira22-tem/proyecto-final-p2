@@ -81,7 +81,7 @@ function App() {
     setMostrarModalEliminacion(true);
   };
 
-  // confirmar expulsion del guerrero
+  // confirmar expulsion
   const confirmarEliminacion = () => {
     if (contactoAEliminar) {
       setContactos(
