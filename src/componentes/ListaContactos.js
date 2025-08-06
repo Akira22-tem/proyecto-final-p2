@@ -1,5 +1,3 @@
-listaContactos.js
-
 import React from 'react';
 
 function ListaContactos({
@@ -9,12 +7,12 @@ function ListaContactos({
   onEliminarContacto,
   modoOscuro,
 }) {
-  // Función para obtener las iniciales del nombre
+  
   const obtenerIniciales = (nombre) => {
     return nombre.charAt(0).toUpperCase();
   };
 
-  // Función para formatear la fecha
+  
   const formatearFecha = (fechaISO) => {
     const fecha = new Date(fechaISO);
     return fecha.toLocaleDateString('es-ES', {
@@ -24,7 +22,7 @@ function ListaContactos({
     });
   };
 
-  // Estilos temática guerrera
+  
   const estilosGuerreros = {
     tarjetaContacto: {
       background: modoOscuro
@@ -117,7 +115,7 @@ function ListaContactos({
     },
   };
 
-  // Si no hay contactos registrados
+  
   if (totalContactosOriginales === 0) {
     return (
       <div className="text-center py-5">
@@ -155,13 +153,13 @@ function ListaContactos({
             fontWeight: 'bold',
           }}
         >
-          ⚔ Comienza tu ejército reclutando tu primer guerrero de élite
+          ⚔️ Comienza tu ejército reclutando tu primer guerrero de élite
         </p>
       </div>
     );
   }
 
-  // Si no se encontraron contactos con los filtros aplicados
+  
   if (contactos.length === 0) {
     return (
       <div className="text-center py-5">
@@ -254,7 +252,7 @@ function ListaContactos({
                 {contacto.fotoUrl ? (
                   <img
                     src={contacto.fotoUrl}
-                    alt={Guerrero ${contacto.nombre}}
+                    alt={`Guerrero ${contacto.nombre}`}
                     style={estilosGuerreros.fotoGuerrero}
                   />
                 ) : (
@@ -340,7 +338,7 @@ function ListaContactos({
                 className="card-title text-truncate mb-4"
                 style={estilosGuerreros.nombreGuerrero}
               >
-                ⚔ {contacto.nombre}
+                ⚔️ {contacto.nombre}
               </h5>
 
               <div className="informacion-contacto">
@@ -426,7 +424,7 @@ function ListaContactos({
                   letterSpacing: '0.5px',
                 }}
               >
-                ⚔ Reclutado: {formatearFecha(contacto.fechaCreacion)}
+                ⚔️ Reclutado: {formatearFecha(contacto.fechaCreacion)}
               </small>
             </div>
           </div>
