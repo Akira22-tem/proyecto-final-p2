@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import FormularioContacto from './componentes/FormularioContacto';
+import ListaContactos from './componentes/ListaContactos';
+import BusquedaContactos from './componentes/BusquedaContactos';
+import FiltrosOrdenacion from './componentes/FiltrosOrdenacion';
+import ModalEliminacion from './componentes/ModalEliminacion';
+import BarraNavegacion from './componentes/BarraNavegacion';
+import ExportarContactos from './componentes/ExportarContactos';
 
 function App() {
+  // estados principales
+  const [contactos, setContactos] = useState([]);
+  const [terminoBusqueda, setTerminoBusqueda] = useState('');
+  const [ordenAscendente, setOrdenAscendente] = useState(true);
+  const [letraFiltro, setLetraFiltro] = useState('');
+  const [modoOscuro, setModoOscuro] = useState(false);
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [contactoEditando, setContactoEditando] = useState(null);
+  const [mostrarModalEliminacion, setMostrarModalEliminacion] = useState(false);
+  const [contactoAEliminar, setContactoAEliminar] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>agenda guerrera cargando...</h1>
     </div>
   );
 }
